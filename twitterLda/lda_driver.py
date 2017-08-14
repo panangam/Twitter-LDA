@@ -90,8 +90,9 @@ class LdaDriver(object):
                 self.ven_id2i[line[0]] = int(line[1])
 
         # Load venues for comparison
-        # self.vens = sq.topn_venues()
-        # self.dist_matrix = self.compare_venues(self.vens)
+        if kwargs['make_venues']:
+            self.vens = sq.topn_venues()
+            self.dist_matrix = self.compare_venues(self.vens)
 
 
     def compare_venues(self, venues):
