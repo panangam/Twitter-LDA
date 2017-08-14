@@ -1,9 +1,71 @@
-data/twitData*
-data/ven/*
-data/CA_split/*
-data/tmp2/*
-data/tweets/*.log
-data/tweets/*.txt
-data/shout/*
-twitData*
+###Python###
 
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# generated data
+data/corpora/*
+data/db/*
+data/filtered_tweets/*
+data/ldaModels/*
+data/shouts/tweets/*
+data/ven/*
+data/categories.json
+data/ven_id2i.txt
+
+# sample data to include
+!data/shouts/test_shouts.txt
+!data/shouts/test_shouts_2.txt
+!data/tweets/tweetDataSmall.txt
