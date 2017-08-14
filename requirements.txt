@@ -1,0 +1,11 @@
+peewee>=2.10.1
+gensim>=2.3.0
+tweepy>=3.5.0
+ujson?>=1.35
+requests>=2.18.2
+nltk>=3.2.4
+matplotlib>=2.0.2
+numpy>=1.13.1
+pyLDAvis>=2.1.1
+scikit_learn>=0.19b2
+click>=6.7

@@ -1,0 +1,8 @@
+data/twitData*
+data/ven/*
+data/CA_split/*
+data/tmp2/*
+data/tweets/*.log
+data/tweets/*.txt
+data/shout/*
+twitData*
