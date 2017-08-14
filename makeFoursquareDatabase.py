@@ -4,7 +4,7 @@ import twitterLda.sqlite_queries as sq
 sq.connect() 
 
 # insert shouts from a text file containing json form API into database
-with open('data/shouts/test_shout_8-10-2017.txt') as fin:
+with open('data/shouts/test_shouts.txt') as fin:
   sq.insertShoutsFromJson(fin)
 
 # generate helper venues documents

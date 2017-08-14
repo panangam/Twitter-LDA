@@ -3,8 +3,19 @@ fileReader.py
 
 Provide several utilities function to read some file formats. Most functions get a file (or string iterable) as an input and output an iterable of texts.
 '''
+from twitterLda.projectPath import datadir
+
 import json
 import csv
+import os
+
+def tweetIterFuncGen(filename):
+  def tweetIterFunc():
+    with open(filename) as fin:
+      for text in twitterFileReader(fin):
+        yield text.decode('utf8', 'ignore')
+
+  return tweetIterFunc
 
 def twitterFileReader(fin):
   '''
@@ -72,6 +83,15 @@ if __name__ == '__main__':
     for text in lineIter:
       j += 1
     print i, j
+
+def venIterFunc():
+  vendir = os.path.join(datadir, 'ven')
+  venDocList = os.listdir(vendir)
+  venDocPathList = [os.path.join(vendir, venDoc) for venDoc in venDocList]
+  for venDocPath in venDocPathList:
+    with open(venDocPath, 'r') as venDocFile:
+      for shout in venDocFile:
+        yield shout.decode('utf8', 'ignore')
   
   '''
   with open(os.path.join(datadir, 'twitData31.dat'), 'r') as fin:

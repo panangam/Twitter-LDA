@@ -2,6 +2,16 @@
 
 This is a collection of python code utilized in a research paper regarding topic modelling of texts ("shouts") from a location-based social network (Foursquare). Data is gathered initially from Twitter tweets gathered from Twitter Streaming API, which are then cross-referenced using Foursquare/Swarm API to retrieve the original shout text. Shouts are then filtered, processed, tokenized, and analyzed using LDA (Latent Dirichlet Allocation) algorithm. The generated LDA model can then be visualized using several techniques. The code assume input data of shouts/check-ins each associated with a user and a "venue." Each venue is a place with name, coordinates, and venue_id. Visualization techniques are primarily used to compare different venues to each other. 
 
+## Requirements
+
+1. Python version 2.7
+2. Other dependencies listed in requirements.txt
+
+## Installation
+
+1. Clone repository or download the whole directory and change working directory into the root directory of project
+2. Use pip or virtualenv to install dependency listed in requirements.txt
+
 ## Hyper parameters
 
 - Tokenization library to use (Twokenize, Gensim, or NLTK Tweet Tokenizer) => (twokenize, gensim, tweet)
