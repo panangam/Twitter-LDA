@@ -60,8 +60,10 @@ data/corpora/*
 data/db/*
 data/filtered_tweets/*
 data/ldaModels/*
-data/shouts/tweets/*
+data/shouts/*
+data/tweets/*
 data/ven/*
+data/ldaProjects/*
 data/categories.json
 data/ven_id2i.txt
 

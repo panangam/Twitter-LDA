@@ -19,9 +19,6 @@ logging.basicConfig(format='%(levelname)s : %(message)s', level=logging.DEBUG)
 
 _SQRT2 = np.sqrt(2)  # sqrt(2) with default precision np.float64
 
-corpusdir = os.path.join(datadir, 'corpora')
-modeldir = os.path.join(datadir, 'ldaModels')
-
 class LdaDriver(object):
     """
     Class to create corpora, LDA models, and perform queries on the models.
@@ -35,24 +32,39 @@ class LdaDriver(object):
         :return: self
         :rtype: LdaDriver
         """
+        self.project_name = kwargs['project_name']
         self.corpus_type = kwargs['corpus_type']
         self.num_topics = kwargs['num_topics']
         self.num_passes = kwargs['num_passes']
         self.alpha = kwargs['alpha']
         self.docIterFunc = kwargs['docIterFunc']
 
+        # prepare directory for this project
+        self.projectdir = os.path.join(datadir, 'ldaProjects', self.project_name)
+
+        if not os.path.exists(self.projectdir):
+            os.makedirs(self.projectdir)
+
+        self.corpusdir = os.path.join(self.projectdir, 'corpora')
+        self.modeldir = os.path.join(self.projectdir, 'ldaModels')
+
+        if not os.path.exists(self.corpusdir):
+            os.makedirs(self.corpusdir)
+        if not os.path.exists(self.modeldir):
+            os.makedirs(self.modeldir)
+
         if kwargs['make_corpus']:
             self.cor = MyCorpus(self.docIterFunc, self.corpus_type)
-            self.cor.dictionary.save(os.path.join(corpusdir, '{}_dictionary.dict'.format(self.corpus_type)))
-            corpora.MmCorpus.serialize(os.path.join(corpusdir, '{}_corpus.mm'.format(self.corpus_type)),
+            self.cor.dictionary.save(os.path.join(self.corpusdir, '{}_dictionary.dict'.format(self.corpus_type)))
+            corpora.MmCorpus.serialize(os.path.join(self.corpusdir, '{}_corpus.mm'.format(self.corpus_type)),
                                        self.cor,
                                        id2word=self.cor.dictionary,
-                                       index_fname=os.path.join(corpusdir, '{}_corpus.mm.index'.format(self.corpus_type)),
+                                       index_fname=os.path.join(self.corpusdir, '{}_corpus.mm.index'.format(self.corpus_type)),
                                        progress_cnt=1000)
         
         # load corpus from file
-        self.cor = corpora.MmCorpus(os.path.join(corpusdir, '{}_corpus.mm'.format(self.corpus_type)))
-        self.cor.dictionary = corpora.Dictionary.load(os.path.join(corpusdir, '{}_dictionary.dict'.format(self.corpus_type)))
+        self.cor = corpora.MmCorpus(os.path.join(self.corpusdir, '{}_corpus.mm'.format(self.corpus_type)))
+        self.cor.dictionary = corpora.Dictionary.load(os.path.join(self.corpusdir, '{}_dictionary.dict'.format(self.corpus_type)))
 
         # Train a new LDA
         if kwargs['make_lda']:
@@ -75,11 +87,11 @@ class LdaDriver(object):
                                                iterations=50)
 
             # Save LDA model
-            self.lda.save(os.path.join(modeldir, '{}_lda_{}t_{}p_{}.model'.format(
+            self.lda.save(os.path.join(self.modeldir, '{}_lda_{}t_{}p_{}.model'.format(
                 self.corpus_type, self.num_topics, self.num_passes, self.alpha)))
 
         # Load LDA model
-        self.lda = models.LdaMulticore.load(os.path.join(modeldir, '{}_lda_{}t_{}p_{}.model'.format(
+        self.lda = models.LdaMulticore.load(os.path.join(self.modeldir, '{}_lda_{}t_{}p_{}.model'.format(
             self.corpus_type, self.num_topics, self.num_passes, self.alpha)))
 
         # Load venue index

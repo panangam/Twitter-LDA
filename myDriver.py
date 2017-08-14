@@ -4,7 +4,8 @@ from codecs import open
 
 if __name__ == '__main__':
   with open('data/tweets/tweetDataSmall.txt', 'r', encoding='utf8') as fin:
-    driver_settings = {'corpus_type':'twokenize',
+    driver_settings = {'project_name':'test_venue',
+                       'corpus_type':'twokenize',
                        'num_topics':10,
                        'num_passes':3,
                        'alpha':'symmetric',
