@@ -1,7 +1,7 @@
 peewee>=2.10.1
 gensim>=2.3.0
 tweepy>=3.5.0
-ujson?>=1.35
+ujson>=1.35
 requests>=2.18.2
 nltk>=3.2.4
 matplotlib>=2.0.2
