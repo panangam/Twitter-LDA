@@ -6,3 +6,4 @@ data/tweets/*.log
 data/tweets/*.txt
 data/shout/*
 twitData*
+
