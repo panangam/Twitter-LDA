@@ -74,7 +74,7 @@ LDA model and corpus learning or loading is controlled by several parameters pas
 - corpus_type: Type of corpus to used (must be a string one of `twokenize`, `gensim`, or `tweet`).
 - num_topics: Number of topics assumed to be present in the corpus.
 - num_passes: Number of passes to run the lDA algorithm.
-- alpha: Type of alpha to used to learn LDA (must be one of `symetric` or `auto`).
+- alpha: Type of alpha to used to learn LDA (must be one of `symmetric` or `auto`).
 - docIterFunc: Function returning a generator yielding a document from the corpus each time it is iterated. This function will be called multiple times, with each time producing a generator starting at the first document. Several "IterFunc"s are available in package `twitterLda.fileReader`
 - make_corpus: (`True, False`) Choose to extract new corpus from the documents or not. If set to `False`, a generated corpus will be used.
 - make_lda: (`True, False`) Choose to learn a new LDA model or not. If set to `False`, a learnt model will be loaded.
