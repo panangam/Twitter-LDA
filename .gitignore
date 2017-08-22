@@ -71,3 +71,10 @@ data/ven_id2i.txt
 !data/shouts/test_shouts.txt
 !data/shouts/test_shouts_2.txt
 !data/tweets/tweetDataSmall.txt
+!data/db/10-27.sqlite
+
+# for compiled Markdown
+*.html
+
+# for authentication information
+twitterAuth.json
